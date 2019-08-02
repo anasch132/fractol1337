@@ -22,6 +22,8 @@ int key_press(int keycode, void *param)
 
 	if(keycode == 53)
 		exit(0);
+	if (keycode == 124 || keycode == 123)
+	ft_light(keycode, param);
 	if(keycode == 11)
 			img->fix = !img->fix;
 	if(keycode == 82)
@@ -34,16 +36,10 @@ int key_press(int keycode, void *param)
 		ft_iter_moin(param);
 	if(keycode == 8)
 		ft_change_color(param);	
-	if (keycode == 83)
-		ft_julia2_change(param);
-	if (keycode == 84)
-		ft_mandelbrot2_change(param);
-	if (keycode == 85)
-		ft_burning_ship_change(param);
-	if (keycode == 86)
-		ft_julia_change(param);
-	if (keycode == 87)
-	ft_mandelbrot3_change(param);
+	if (keycode == 83 || keycode == 84 || keycode == 85 || keycode == 86 || keycode == 87)
+	ft_map_changer(keycode, param);
+
+		
 		return 0;
 }
 int ft_mouse_press(int button, int x, int y, void *param)
@@ -83,4 +79,20 @@ void ft_iter_plus(void *param)
 		else if (img->i == 5)
 			mandelbrot3(param);	
 }
+ void ft_map_changer(int i, void *param)
+ {
+	 t_image *img;
+	 img = (t_image *)param;
 
+	 if (i == 83)
+	 ft_julia2_change(param);
+	 else if (i == 84)
+	 ft_mandelbrot2_change(param);
+	 else if (i == 85)
+	 ft_burning_ship_change(param);
+	 else if (i == 86)
+	 ft_julia_change(param);
+	 else if (i == 87)
+	 ft_mandelbrot3_change(param);
+
+ }

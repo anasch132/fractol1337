@@ -32,9 +32,9 @@ void mandelbrot4(void *param)
                 img->re.x = img->map.x_new ;
             }
             if (img->map.iter >= img->max )
-            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
+            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f, img->color, img->color_change);
             else
-            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
+            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f, img->color, img->color_change);
         } 
     }
     mlx_put_image_to_window(img->mlx_ptr	, img->win_ptr, img->img_ptr , 0,0);
@@ -64,9 +64,9 @@ void julia2(void *param)
                 img->re.x = img->map.x_new ;
             }
             if (img->map.iter >= img->max )
-            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
+            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f, img->color, img->color_change);
             else
-                img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
+                img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f, img->color, img->color_change);
         } 
         }
     mlx_put_image_to_window(img->mlx_ptr	, img->win_ptr, img->img_ptr , 0,0);
