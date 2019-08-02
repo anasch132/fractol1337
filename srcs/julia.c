@@ -16,28 +16,23 @@ void mandelbrot4(void *param)
 {   
     t_image *img = (t_image *) param;
 
-    
     img->vect.x = -1;
     img->vect.y = -1;
-
     while (++img->vect.y < height)
     {
         img->vect.x = -1;
         while ( ++img->vect.x < width)
         {
-            t_complex z = (t_complex){0.0, 0.0};
-            t_complex c = (t_complex){0.0, 0.0};
-            ft_map(&z, img->pmin, img->pmax, img->vect);
-           c = z;
+        ft_calcul(img);
             img->map.iter = 0;
-            while(z.x * z.x + z.y * z.y < 4 && (img->map.iter += 2) < img->max)
+            while(img->re.x * img->re.x + img->re.y * img->re.y < 4 && (img->map.iter += 2) < img->max)
             {
-                img->map.x_new = pow(z.x,3) - 3*z.x*pow(z.y, 2) + c.x;
-                z.y = 3 * pow(z.x, 2) * z.y - pow(z.y, 3) + c.y;
-                z.x = img->map.x_new ;
+                img->map.x_new = pow(img->re.x,3) - 3*img->re.x*pow(img->re.y, 2) + img->im.x;
+                img->re.y = 3 * pow(img->re.x, 2) * img->re.y - pow(img->re.y, 3) + img->im.y;
+                img->re.x = img->map.x_new ;
             }
             if (img->map.iter >= img->max )
-            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] =0x000;
+            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
             else
             img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
         } 
@@ -55,25 +50,21 @@ void julia2(void *param)
     img->vect.y = -1;
     while (++img->vect.y < height)
     {
-        img->map.x = -1;
+        img->vect.x = -1;
         while ( ++img->vect.x < width)
         {
-            t_complex z = (t_complex){0.0, 0.0};
-            t_complex c = (t_complex){0.0, 0.0};
-
-            ft_map(&z, img->pmin, img->pmax, img->vect);
-           // c = z;
-             c.x = img->map.c_re;
-            c.y = img->map.c_im;
+            ft_calcul(img);
+            img->im.x = img->map.c_re;
+            img->im.y = img->map.c_im;
             img->map.iter = 0;
-            while(z.x * z.x + z.y * z.y < 4 && (img->map.iter += 2) < img->max)
+            while(img->re.x * img->re.x + img->re.y * img->re.y < 4 && (img->map.iter += 2) < img->max)
             {
-                img->map.x_new = pow(z.x , 2) - z.y * z.y + c.x;
-                z.y = 2 * z.x *z.y + c.y;
-                z.x = img->map.x_new ;
+                img->map.x_new = pow(img->re.x , 2) - img->re.y * img->re.y + img->im.x;
+                img->re.y = 2 * img->re.x *img->re.y + img->im.y;
+                img->re.x = img->map.x_new ;
             }
             if (img->map.iter >= img->max )
-            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter, img->f);
+            img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
             else
                 img->mlx_data[(int)img->vect.y * width + (int)img->vect.x] = img->fun(img->map.iter , img->f);
         } 

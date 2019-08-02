@@ -47,8 +47,8 @@ void	ft_lance(t_image *img)
 	img->fix = 1;
 	img->map.x_new = 0;
 	img->max = 10;
-	img->map.c_re = 2;
-	img->map.c_im = -2;
+	img->map.c_re = 5;
+	img->map.c_im = -5;
 	img->map.count = 0;
 	img->pmin.x = -2.9;
 	img->pmin.y = -1.7;
@@ -56,7 +56,7 @@ void	ft_lance(t_image *img)
 	img->co_fix = 1;
 	img->space = 1;
 	img->pmax.y = 1.0;
-	img->f = 0.08;
+	img->f = 1;
 	img->fun = hexcolor;
 	img->func = 1;
 	img->pmin.x = (0 - width / 2.0) * 4.0 / width;

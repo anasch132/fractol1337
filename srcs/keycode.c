@@ -23,20 +23,17 @@ int key_press(int keycode, void *param)
 	if(keycode == 53)
 		exit(0);
 	if(keycode == 11)
-		{
-			t_image *img = (t_image*)param;
 			img->fix = !img->fix;
-		}
 	if(keycode == 82)
 			img->co_fix = !img->co_fix;
 	if (keycode == 69)
 		ft_iter_plus(param);
+	if (keycode == 126 || keycode == 125)
+	ft_light(keycode, param);
 	if (keycode == 78)
 		ft_iter_moin(param);
 	if(keycode == 8)
-		ft_change_color(param);		
-	if(keycode == 49)
-		ft_space_effect(param);
+		ft_change_color(param);	
 	if (keycode == 83)
 		ft_julia2_change(param);
 	if (keycode == 84)

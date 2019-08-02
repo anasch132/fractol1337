@@ -20,8 +20,8 @@ int mouse_move(int x, int y, void *param)
 	img = (t_image*)param;
 	if (!img->fix && img->i == 1)
 	{
-	img->map.c_re = 1.0*x / 2500.0;
-	img->map.c_im = 1.0*y / 2500.0;
+	img->map.c_re = 1.0*x /1000;
+	img->map.c_im = 1.0*y / 1000;
 	if (img->i == 1)
 	julia2(param);
 	else if (img->i ==	 4)

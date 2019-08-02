@@ -30,15 +30,20 @@ void	ft_color(void *param, void (*f)(void *))
 	t_image *img;
 
 	img = (t_image *)param;
-	if (img->func == 1)
+	if (img->func == 3)
 	{
 		img->fun = ft_hexcolor;
 		img->func = 2;
 		
 	}
-	else
+	else if (img->func == 1)
 	{
 		img->fun = hexcolor;
+		img->func = 3;
+	}
+	else if (img->func == 2)
+	{
+		img->fun = ft_hexcolor3;
 		img->func = 1;
 	}
 	ft_clear(img);

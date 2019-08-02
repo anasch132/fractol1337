@@ -71,6 +71,8 @@ typedef struct s_image
 	t_complex pmin;
 	s_map   map;
 	t_complex vect;
+	t_complex re;
+	t_complex im;
 	int 	space;
 	int 	i;
 
@@ -79,14 +81,17 @@ typedef struct s_image
 
 int ft_close(void *param);
 int key_press(int keycode, void *param);
+void ft_calcul(t_image *img);
 void mandelbrot4(void *param);
 int init();
 void ft_ozoom(void *param, int button, t_complex l, void (*f)(void *));
 void ft_parsing();
 int ft_space_effect(void *param);
 int ft_change_color(void *param);
+int ft_hexcolor2(int i, double freqe);
 void ft_iter_moin(void * param);
 void ft_iter_plus(void *param);
+int ft_hexcolor3(int i, double freqe);
 void julia2(void *param);
 void mandelbrot3(void *param);
 double	ft_interpolate(double end, double x, double factor);
@@ -97,6 +102,7 @@ int ft_mouse_press(int button, int x, int y, void *param);
 void  ft_map(t_complex *z, t_complex pmin, t_complex pmax, t_complex mp);
 int ft_hexcolor(int i , double freqe);
 void mandelbrot2(void *param);
+void ft_light(int i, void *param);
 void ft_julia2_change(void *param);
 void ft_julia_change(void *param);
 void ft_mandelbrot3_change(void *param);

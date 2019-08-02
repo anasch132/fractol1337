@@ -34,7 +34,8 @@ SRC_NAME = colors.c			\
 		   keycode.c		\
 		   keycode1.c		\
 		   main.c			\
-		   julia.c
+		   julia.c			\
+		   events1.c
 
 all: $(NAME)
 
